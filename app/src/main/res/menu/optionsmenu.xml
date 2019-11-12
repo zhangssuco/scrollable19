@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.scrollable19.ScrollingActivity">
+    <item
+        android:id="@+id/shorterone"
+        android:orderInCategory="100"
+        android:title="justnewtext"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/fromweb"
+        android:orderInCategory="100"
+        android:title="Read a text remotely from http://textfiles.com/food/batrbred.txt"
+        app:showAsAction="never" />
+
+</menu>

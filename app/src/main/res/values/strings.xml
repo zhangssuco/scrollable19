@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Processes and Threds Overview</string>
+    <string name="large_text">
+
+        "Processes and threads overview\n"
+        "This is an excerpt from Android Developer website\n\n"
+        "Please fix the alignment as an exercise, using ctrl-enter at the end, I assume ...\n\n"
+
+        "When an application component starts and the application does not have any other components running,
+        the Android system starts a new Linux process for the application with a single thread of execution.
+        By default, all components of the same application run in the same process and thread (called the main thread).
+        If an application component starts and there already exists a process for that application
+        (because another component from the application exists), then the component is started within that process
+        and uses the same thread of execution. However, you can arrange for different components in your application
+        to run in separate processes, and you can create additional threads for any process.\n\n"
+
+        "Processes\n"
+        "By default, all components of the same application run in the same process and most applications should not change this.
+        However, if you find that you need to control which process a certain component belongs to, you can do so in the manifest file.\n\n"
+        "Android might decide to shut down a process at some point, when memory is low and required by other processes
+        that are more immediately serving the user.
+        Application components running in the process that's killed are consequently destroyed.
+        A process is started again for those components when there's again work for them to do.
+        When deciding which processes to kill, the Android system weighs their relative importance to the user.
+        For example, it more readily shuts down a process hosting activities that are no longer visible on screen,
+        compared to a process hosting visible activities.
+        The decision whether to terminate a process, therefore, depends on the state of the components running in that process.\n\n"
+
+        "Threads\n\n"
+        "When an application is launched, the system creates a thread of execution for the application, called main.
+        This thread is very important because it is in charge of dispatching events to the appropriate user interface widgets,
+        including drawing events. It is also almost always the thread in which your application interacts with components from
+        the Android UI toolkit (components from the android.widget and android.view packages). As such, the main thread is also
+        sometimes called the UI thread. However, under special circumstances, an app's main thread might not be its UI thread!!!
+        \n\n"
+
+       "The system does not create a separate thread for each instance of a component. All components that run in the same process are
+        instantiated in the UI thread, and system calls to each component are dispatched from that thread. Consequently,
+        methods that respond to system callbacks (such as onKeyDown() to report user actions or a lifecycle callback method)
+        always run in the UI thread of the process.For instance, when the user touches a button on the screen,
+        your app's UI thread dispatches the touch event to the widget,
+        which in turn sets its pressed state and posts an invalidate request to the event queue. The UI thread dequeues the request
+        and notifies the widget that it should redraw itself.\n\n"
+        "When your app performs intensive work in response to user interaction, this single thread model can yield poor performance
+        unless you implement your application properly. Specifically, if everything is happening in the UI thread, performing long
+        operations such as network access or database queries will block the whole UI. When the thread is blocked, no events can be dispatched,
+        including drawing events. From the user's perspective, the application appears to hang. Even worse, if the UI thread is blocked for more
+        than a few seconds (about 5 seconds currently) the user is presented with the infamous application not
+        responding (ANR) dialog. The user might then decide to quit your application and uninstall it if they are unhappy.\n\n"
+
+        "Additionally, the Android UI toolkit is not thread-safe. So, you must not manipulate your UI from a worker thread—
+        you must do all manipulation to your user interface from the UI thread.
+        Thus, there are simply two rules to Android's single thread model:
+        Do not block the UI thread
+        Do not access the Android UI toolkit from outside the UI thread\n\n"
+"Worker threads\n\n"
+        "Because of the single threaded model described above, it's vital to the responsiveness of your application's UI that
+        you do not block the UI thread. If you have operations to perform that are not instantaneous,
+        you should make sure to do them in separate threads (background or worker threads).
+        However, note that you cannot update the UI from any thread other than the UI thread or the main thread.
+        To fix this problem, Android offers several ways to access the UI thread from other threads.\n\n"
+
+
+    </string>
+    <string name="action_settings">Settings</string>
+</resources>
